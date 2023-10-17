@@ -15,7 +15,7 @@ const AppLayout = () => (
 );
 function App() {
   return (
-    <div className="mx-auto max-w-[26rem] bg-[#282828] h-screen relative text-white text-base">
+    <div className="mx-auto max-w-[26rem] bg-[#282828] h-screen max-h-[70rem] overflow-hidden relative text-white text-base">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
