@@ -10,7 +10,7 @@ import Freq from "../assets/Freq";
 
 const Home = () => {
   return (
-    <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-scroll h-full">
+    <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
       <p className="font-bold text-xl mb-10">Home</p>
       <div className="flex items-center justify-between gap-2 w-full">
         {/* user's name */}
