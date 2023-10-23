@@ -26,7 +26,7 @@ const Convert = () => {
           </svg>
           {/* from currency input box */}
           <input
-            type="text"
+            type="number"
             placeholder="Naira"
             className="placeholder:text-[#717171] bg-inherit ml-3 outline-none"
           />
@@ -51,7 +51,7 @@ const Convert = () => {
           </svg>
           {/* to currency input box */}
           <input
-            type="text"
+            type="number"
             placeholder="Us Dollars"
             className="placeholder:text-[#717171] bg-inherit ml-3 outline-none"
           />

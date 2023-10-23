@@ -6,6 +6,7 @@ import Currency from "./pages/Currency";
 import News from "./pages/News";
 import Navbar from "./components/Navbar";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Settings from "./pages/Settings";
 
 const AppLayout = () => (
   <>
@@ -15,7 +16,7 @@ const AppLayout = () => (
 );
 function App() {
   return (
-    <div className="mx-auto max-w-[26rem] bg-[#282828] h-screen max-h-[70rem] overflow-hidden relative text-white text-base">
+    <div className="flex flex-col mx-auto max-w-[26rem] relative bg-[#282828] h-screen max-h-[70rem] overflow-hidden text-white text-base">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
@@ -30,11 +31,17 @@ const router = createBrowserRouter([
       },
       {
         path: "convert",
-        element: <Convert />
+        element: <Convert />,
       },
       {
         path: "profile",
         element: <Profile />,
+        children: [
+          {
+            path: "settings",
+            element: <Settings />,
+          },
+        ]
       },
       {
         path: "currency",

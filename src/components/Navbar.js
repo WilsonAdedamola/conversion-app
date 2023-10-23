@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="nav-bg absolute bottom-0 w-full py-5 flex items-center justify-around gap-2">
+    <nav className="nav-bg self-end w-full py-4 mt-2 flex items-center justify-around gap-2">
       <NavLink to="/" className="flex justify-center items-center flex-col">
         {/* <img src={activeHome} alt="" /> */}
         <svg

@@ -43,6 +43,7 @@ nav a:hover svg {
 
 .scroll::-webkit-scrollbar-track {
   /* padding: 20px 0; */
+  border-radius: 10px;
   background-color: #151718;
 }
 

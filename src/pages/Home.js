@@ -7,6 +7,7 @@ import star from "../assets/star.svg";
 import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 import Freq from "../assets/Freq";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -82,98 +83,103 @@ const Home = () => {
           </tr>
           <tr className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
-                <img src={star} alt="Favorite" />
-                <p className="text-xs">1</p>
+              <img src={star} alt="Favorite" />
+              <p className="text-xs">1</p>
             </td>
             <td className="text-sm">Naira</td>
             <td className="text-xs text-[#A1A1A1] text-center">NGN</td>
             <td className="text-sm">₦1.00</td>
             <td className="">
-                <img src={arrowUp} alt="" className="inline-block mr-1" />
-                <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
+              <img src={arrowUp} alt="" className="inline-block mr-1" />
+              <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
             </td>
             <td className="">
-                <img src={arrowDown} alt="" className="inline-block mr-1"/>
-                <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
+              <img src={arrowDown} alt="" className="inline-block mr-1" />
+              <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
           </tr>
 
           <tr className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
-                <img src={star} alt="Favorite" />
-                <p className="text-xs">2</p>
+              <img src={star} alt="Favorite" />
+              <p className="text-xs">2</p>
             </td>
             <td className="text-sm">US Dollar</td>
             <td className="text-xs text-[#A1A1A1] text-center">USD</td>
             <td className="text-sm">₦920.00</td>
             <td className="">
-                <img src={arrowUp} alt="" className="inline-block mr-1" />
-                <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
+              <img src={arrowUp} alt="" className="inline-block mr-1" />
+              <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
             </td>
             <td className="">
-                <img src={arrowDown} alt="" className="inline-block mr-1"/>
-                <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
+              <img src={arrowDown} alt="" className="inline-block mr-1" />
+              <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
           </tr>
 
           <tr className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
-                <img src={star} alt="Favorite" />
-                <p className="text-xs">3</p>
+              <img src={star} alt="Favorite" />
+              <p className="text-xs">3</p>
             </td>
             <td className="text-sm">Pound st...</td>
             <td className="text-xs text-[#A1A1A1] text-center">GBP</td>
             <td className="text-sm">₦1100.00</td>
             <td className="">
-                <img src={arrowUp} alt="" className="inline-block mr-1" />
-                <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
+              <img src={arrowUp} alt="" className="inline-block mr-1" />
+              <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
             </td>
             <td className="">
-                <img src={arrowDown} alt="" className="inline-block mr-1"/>
-                <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
+              <img src={arrowDown} alt="" className="inline-block mr-1" />
+              <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
           </tr>
 
           <tr className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
-                <img src={star} alt="Favorite" />
-                <p className="text-xs">4</p>
+              <img src={star} alt="Favorite" />
+              <p className="text-xs">4</p>
             </td>
             <td className="text-sm">Ghanaia...</td>
             <td className="text-xs text-[#A1A1A1] text-center">GHS</td>
             <td className="text-sm">₦66.93</td>
             <td className="">
-                <img src={arrowUp} alt="" className="inline-block mr-1" />
-                <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
+              <img src={arrowUp} alt="" className="inline-block mr-1" />
+              <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
             </td>
             <td className="">
-                <img src={arrowDown} alt="" className="inline-block mr-1"/>
-                <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
+              <img src={arrowDown} alt="" className="inline-block mr-1" />
+              <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
           </tr>
 
           <tr className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
-                <img src={star} alt="Favorite" />
-                <p className="text-xs">5</p>
+              <img src={star} alt="Favorite" />
+              <p className="text-xs">5</p>
             </td>
             <td className="text-sm">West Afri...</td>
             <td className="text-xs text-[#A1A1A1] text-center">CFA</td>
             <td className="text-sm">₦1.26</td>
             <td className="">
-                <img src={arrowUp} alt="" className="inline-block mr-1" />
-                <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
+              <img src={arrowUp} alt="" className="inline-block mr-1" />
+              <p className="text-[#2DC24E] text-xs inline-block">0.22%</p>
             </td>
             <td className="">
-                <img src={arrowDown} alt="" className="inline-block mr-1"/>
-                <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
+              <img src={arrowDown} alt="" className="inline-block mr-1" />
+              <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
           </tr>
         </table>
       </div>
 
       {/* news */}
-      <p className="text-[0.9rem] self-start my-4">News</p>
+      <Link
+        to="news"
+        className="text-[0.9rem] self-start my-4 cursor-pointer hover:font-semibold"
+      >
+        News
+      </Link>
       <div className="flex items-center justify-between w-full bg-[#151718] rounded-xl gap-4 p-5 cursor-pointer">
         <div className="flex flex-col items-start justify-center max-w-[12rem]">
           <p className="text-2xl font-bold">Title</p>
