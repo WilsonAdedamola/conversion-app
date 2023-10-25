@@ -8,7 +8,7 @@ const Convert = () => {
       <p className="font-bold text-xl mb-10">Convert</p>
       <div className="flex flex-col items-center justify-center gap-2 bg-[#151718] w-full rounded-3xl p-5">
         <p className="justify-self-start w-full ml-10">From:</p>
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <img src={fromCurrency} alt="" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,12 +28,12 @@ const Convert = () => {
           <input
             type="number"
             placeholder="Naira"
-            className="placeholder:text-[#717171] bg-inherit ml-3 outline-none"
+            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none"
           />
         </div>
 
         <p className="justify-self-start w-full ml-10">To:</p>
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <img src={toCurrency} alt="" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const Convert = () => {
           <input
             type="number"
             placeholder="Us Dollars"
-            className="placeholder:text-[#717171] bg-inherit ml-3 outline-none"
+            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none"
           />
         </div>
         {/* convert button */}

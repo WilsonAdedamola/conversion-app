@@ -42,7 +42,7 @@ const Settings = () => {
       </div>
       <p className="w-full self-start text-[0.9rem] mb-7">Edit Profile</p>
       <div className="flex flex-col gap-2 items-center w-full">
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <p className="text-[#717171] w-[25%]">First Name</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,11 +61,11 @@ const Settings = () => {
           <input
             type="text"
             placeholder="Ife"
-            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none"
+            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none pr-2"
           />
         </div>
 
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <p className="text-[#717171] w-[25%]">Last Name</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -84,11 +84,11 @@ const Settings = () => {
           <input
             type="text"
             placeholder="Ricardo"
-            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none"
+            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none pr-2"
           />
         </div>
 
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <p className="text-[#717171] w-[25%]">Email</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ const Settings = () => {
           <input
             type="email"
             placeholder="ifericardo@gmail.com"
-            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none"
+            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 pr-2 outline-none"
           />
         </div>
 
@@ -135,7 +135,7 @@ const Settings = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
+        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
           <p className="text-[#717171] w-[25%]">Phone</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +154,7 @@ const Settings = () => {
           <input
             type="number"
             placeholder="+44775656756"
-            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none"
+            className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 pr-2 outline-none"
           />
         </div>
 
