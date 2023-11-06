@@ -26,8 +26,8 @@ const Freq = () => {
           y2="27.7908"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#2DC24E" />
-          <stop offset="1" stop-color="#2DC24E" stop-opacity="0" />
+          <stop stopColor="#2DC24E" />
+          <stop offset="1" stopColor="#2DC24E" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

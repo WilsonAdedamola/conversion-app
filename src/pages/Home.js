@@ -73,15 +73,15 @@ const Home = () => {
       <p className="text-[0.9rem] self-start my-4">Favorite Currency</p>
       <div className="w-full">
         <table className="w-full">
-          <tr className="bg-[#1A1D1E]">
+          <tbody className="bg-[#1A1D1E]">
             <th className="p-3 font-normal text-xs">#</th>
             <th className="p-3 font-normal text-xs">Name</th>
             <th className="p-3 font-normal text-xs">Symbol</th>
             <th className="p-3 font-normal text-xs">Price</th>
             <th className="p-3 font-normal text-xs">24H</th>
             <th className="p-3 font-normal text-xs">7D</th>
-          </tr>
-          <tr className="text-center">
+          </tbody>
+          <tbody className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
               <img src={star} alt="Favorite" />
               <p className="text-xs">1</p>
@@ -97,9 +97,9 @@ const Home = () => {
               <img src={arrowDown} alt="" className="inline-block mr-1" />
               <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
-          </tr>
+          </tbody>
 
-          <tr className="text-center">
+          <tbody className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
               <img src={star} alt="Favorite" />
               <p className="text-xs">2</p>
@@ -115,9 +115,9 @@ const Home = () => {
               <img src={arrowDown} alt="" className="inline-block mr-1" />
               <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
-          </tr>
+          </tbody>
 
-          <tr className="text-center">
+          <tbody className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
               <img src={star} alt="Favorite" />
               <p className="text-xs">3</p>
@@ -133,9 +133,9 @@ const Home = () => {
               <img src={arrowDown} alt="" className="inline-block mr-1" />
               <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
-          </tr>
+          </tbody>
 
-          <tr className="text-center">
+          <tbody className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
               <img src={star} alt="Favorite" />
               <p className="text-xs">4</p>
@@ -151,9 +151,9 @@ const Home = () => {
               <img src={arrowDown} alt="" className="inline-block mr-1" />
               <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
-          </tr>
+          </tbody>
 
-          <tr className="text-center">
+          <tbody  className="text-center">
             <td className="flex gap-2 items-center p-3 w-full">
               <img src={star} alt="Favorite" />
               <p className="text-xs">5</p>
@@ -169,7 +169,7 @@ const Home = () => {
               <img src={arrowDown} alt="" className="inline-block mr-1" />
               <p className="text-[#F92C2C] text-xs inline-block">3.22%</p>
             </td>
-          </tr>
+          </tbody>
         </table>
       </div>
 
