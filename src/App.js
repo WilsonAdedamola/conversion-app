@@ -7,6 +7,10 @@ import News from "./pages/News";
 import Navbar from "./components/Navbar";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Settings from "./pages/Settings";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import Transfer from "./pages/Transfer";
+import Transactionhistory from "./pages/Transactionhistory";
 
 const AppLayout = () => (
   <>
@@ -27,11 +31,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Signin />,
+      },
+      {
+        path: "signup",
+        element: <Signup />
+      },
+      {
+        path: "home",
         element: <Home />,
       },
       {
         path: "convert",
         element: <Convert />,
+      },
+      {
+        path: "transfer",
+        element: <Transfer />
       },
       {
         path: "profile",
@@ -40,6 +56,10 @@ const router = createBrowserRouter([
           {
             path: "settings",
             element: <Settings />,
+          },
+          {
+            path: "txnhistory",
+            element: <Transactionhistory />,
           },
         ]
       },

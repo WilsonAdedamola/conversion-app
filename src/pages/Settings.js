@@ -19,23 +19,23 @@ const Settings = () => {
           <path
             d="M27 18L8.625 18"
             stroke="white"
-            stroke-width="2.5"
-            stroke-linecap="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
             stroke-linejoin="round"
           />
           <path
             d="M8.625 18L14.625 24"
             stroke="white"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M8.625 18L14.625 12"
             stroke="white"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         <p className="font-bold text-xl w-full text-center">Profile Settings</p>
@@ -54,8 +54,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <input
@@ -77,8 +77,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <input
@@ -100,8 +100,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <input
@@ -123,8 +123,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <div className="flex items-start w-[65%]">
@@ -147,8 +147,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <input
@@ -171,8 +171,8 @@ const Settings = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           <div className="flex items-start w-[65%]">
