@@ -29,10 +29,16 @@ const Settings = () => {
       }
     );
     response = await response.json();
-    console.log(response)
+    // console.log(response)
+
     // if response
     if (response.User) {
       setUserData(response.User);
+      setFirstName(userData.firstName);
+      setLastName(userData.LastName);
+      setEmailAddress(userData.emailAddress);
+      setCountry(userData.country);
+      setPhoneNumber(userData.phoneNumber);
     }
   };
 
@@ -45,7 +51,15 @@ const Settings = () => {
   };
 
   const handleUserDataUpdate = async () => {
-    console.log(userDetails);
+    // if (
+    //   firstName == "" ||
+    //   lastName == "" ||
+    //   emailAddress == "" ||
+    //   phoneNumber == "" ||
+    //   country == ""
+    // ) {
+    //   toast.info("Edit your profile");
+    // } else {
     let response = await fetch(
       `https://convers-6f30.onrender.com/auth/edit/${token}`,
       {
@@ -55,7 +69,7 @@ const Settings = () => {
       }
     );
     response = await response.json();
-   
+
     // if response
     if (response.message === "Edit Successful") {
       toast.success(response.message);
@@ -66,11 +80,12 @@ const Settings = () => {
     if (response.message === "An error occurred") {
       toast.error(response.message);
     }
+    // }
   };
 
   return (
     <section className="bg-[#282828] absolute top-0 scroll right-0 left-0 flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
-      <ToastContainer theme="colored"/>
+      <ToastContainer theme="colored" />
       <div className="flex items-center justify-between mb-7 w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -230,14 +245,17 @@ const Settings = () => {
               onChange={(e) => setCountry(e.target.value)}
               className="font-bold w-full bg-[#212325] ml-3 outline-none"
             >
-              <option value="">{userData.country}</option>
+              <option value={userData.country}>{userData.country}</option>
               <option value="United Kingdom">United Kingdom</option>
               <option value="Nigeria">Nigeria</option>
               <option value="United States<">United States</option>
             </select>
           </div>
         </div>
-        <button onClick={handleUserDataUpdate} className="w-full bg-[#0A42CB] rounded-lg p-3 mt-1 font-bold text-xl">
+        <button
+          onClick={handleUserDataUpdate}
+          className="w-full bg-[#0A42CB] rounded-lg p-3 mt-1 font-bold text-xl"
+        >
           Update
         </button>
       </div>
