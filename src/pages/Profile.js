@@ -38,10 +38,11 @@ const Profile = () => {
       <p className="font-bold text-xl mb-10">Profile</p>
       <div className="flex flex-col items-center justify-center w-full bg-[#151718] rounded-3xl p-7 h-80 mb-10">
         <div className="w-32 h-32 bg-[#D9D9D9] rounded-md"></div>
-        <p className="font-semibold text-[1.09rem] my-3">
+        <p className="font-semibold text-[1.09rem] mt-3 mb-2">
           {data.firstName} {data.lastName}
         </p>
         <p className="text-sm">{data.emailAddress}</p>
+        <p className="text-sm mt-2">User Id: <span className="font-semibold">{data.userId}</span></p>
       </div>
       {/* profile settings */}
       <Link to="settings" className="w-full">
@@ -185,7 +186,7 @@ const Profile = () => {
         </div>
       </Link>
       {/* withdrawal settings */}
-      <Link to="settings" className="w-full">
+      <Link to="" className="w-full">
         <div className="flex items-center justify-between w-full bg-[#151718] rounded-xl mb-5 p-3 cursor-pointer">
           <div className="flex items-center gap-4 w-full">
             <div className="flex items-center justify-between bg-[#242829] rounded-lg">

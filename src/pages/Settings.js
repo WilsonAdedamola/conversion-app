@@ -29,7 +29,7 @@ const Settings = () => {
       }
     );
     response = await response.json();
-
+    console.log(response)
     // if response
     if (response.User) {
       setUserData(response.User);
@@ -55,8 +55,7 @@ const Settings = () => {
       }
     );
     response = await response.json();
-    console.log(response)
-
+   
     // if response
     if (response.message === "Edit Successful") {
       toast.success(response.message);
@@ -65,7 +64,6 @@ const Settings = () => {
 
     // if error
     if (response.message === "An error occurred") {
-      console.log("error message is:", response.message);
       toast.error(response.message);
     }
   };
@@ -230,7 +228,7 @@ const Settings = () => {
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="font-bold w-full bg-inherit ml-3 outline-none"
+              className="font-bold w-full bg-[#212325] ml-3 outline-none"
             >
               <option value="">{userData.country}</option>
               <option value="United Kingdom">United Kingdom</option>

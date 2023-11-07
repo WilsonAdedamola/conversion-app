@@ -12,7 +12,6 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginDetails);
     let response = await fetch("https://convers-6f30.onrender.com/auth/login", {
       method: "POST",
       body: JSON.stringify(loginDetails),
@@ -22,9 +21,7 @@ const Signin = () => {
 
     // if response
     if (response.message === "Login Successful") {
-      console.log("success message is:", response.message);
       toast.success(response.message);
-      console.log("response", response);
       setEmailAddress("");
       setPassword("");
       localStorage.setItem("user", JSON.stringify(response));
@@ -37,27 +34,25 @@ const Signin = () => {
       response.message === "User Does Not Exist" ||
       "Invalid Password For User"
     ) {
-      console.log("error message is:", response.message);
       toast.error(response.message);
-      console.log("response", response);
       setEmailAddress("");
       setPassword("");
     }
   };
-  
+
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <section className="scroll absolute w-full bg-[#282828] flex flex-col items-center justify-center overflow-y-auto h-full px-5">
       {user ? (
         <div className="w-full">
-        <h3 className="mb-6 text-center">You're Logged in already</h3>
-        <button
+          <h3 className="mb-6 text-center">You're Logged in already</h3>
+          <button
             onClick={() => navigate("home")}
             className="w-full text-[#0A42CB] bg-white rounded-lg p-5 font-bold text-xl"
           >
             Go home
           </button>
-          </div>
+        </div>
       ) : (
         <>
           <ToastContainer theme="colored" />

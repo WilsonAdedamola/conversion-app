@@ -8,6 +8,8 @@ import arrowDown from "../assets/arrow-down.svg";
 import arrowUp from "../assets/arrow-up.svg";
 import Freq from "../assets/Freq";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [name, setName] = useState("");
@@ -28,22 +30,16 @@ const Home = () => {
       }
     );
     response = await response.json();
-    console.log(response);
 
     // if response
     if (response.User) {
       setName(response.User.firstName);
-      console.log("response", response);
-    }
-
-    // if error
-    if (response.message === "An error occurred") {
-      console.log("response", response);
     }
   };
 
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
+      <ToastContainer theme="colored"/>
       <p className="font-bold text-xl mb-10">Home</p>
       <div className="flex items-center justify-between gap-2 w-full">
         {/* user's name */}

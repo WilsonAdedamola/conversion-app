@@ -26,49 +26,41 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(details);
-    let response = await fetch(
-      "https://convers-6f30.onrender.com/auth/signup",
-      {
-        method: "POST",
-        body: JSON.stringify(details),
-        headers: { "Content-Type": "application/json" },
+    if (password.length < 6) {
+      toast.warn("Password must not be less tha 6 digits");
+      return;
+    } else {
+      if (pin.length > 4 || pin.length < 4) {
+        toast.warn("Pin must be 4 digits");
+        return;
+      } else {
+        let response = await fetch(
+          "https://convers-6f30.onrender.com/auth/signup",
+          {
+            method: "POST",
+            body: JSON.stringify(details),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        response = await response.json();
+
+        // if response
+        if (response.message) {
+          console.log("success message is:", response.message);
+          toast.success(response.message);
+          console.log("response", response);
+          navigate("/");
+        }
+
+        // if error
+        if (response.err) {
+          console.log("error message is:", response.err.message);
+          toast.error(response.err.message);
+          console.log("response", response);
+          // setTimeout(navigate("/"), 10000)
+        }
       }
-    );
-    response = await response.json();
-
-    // if response
-    if (response.message) {
-      console.log("success message is:", response.message);
-      toast.success(response.message);
-      console.log("response", response);
-
-      // localStorage.setItem("user-info", JSON.stringify(response))
-      navigate("/")
     }
-
-    // if error
-    if (response.err) {
-      console.log("error message is:", response.err.message);
-      toast.error(response.err.message);
-      console.log("response", response);
-      // setTimeout(navigate("/"), 10000)
-
-    }
-
-    //   const response = new Promise((res) =>
-    //   fetch("https://convers-6f30.onrender.com/auth/signup")
-    //     .then((res) => res.json())
-    //     .then((json) => setTimeout(() => res(json), 5000))
-    //     .catch((err)=>{console.log(err)})
-    // );
-    // useEffect(() => {
-    //   toast.promise(response, {
-    //     pending: "loading...",
-    //     success: response.message,
-    //     error: response.err.message,
-    //   });
-    // },[]);
   };
 
   return (
@@ -142,7 +134,7 @@ const Signup = () => {
           Sign up
         </button>
       </form>
-      <p onChange={(e) => navigate(-1)} className="mt-7 cursor-pointer">
+      <p onClick={() => navigate("/")} className="mt-7 cursor-pointer">
         Have an account, Sign in
       </p>
       <ToastContainer theme="colored" className="w-full text-xs" />

@@ -20,8 +20,8 @@ const Convert = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           {/* from currency input box */}
@@ -45,8 +45,8 @@ const Convert = () => {
             <path
               d="M2 2L2 48"
               stroke="#151718"
-              stroke-width="3"
-              stroke-linecap="round"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
           {/* to currency input box */}
