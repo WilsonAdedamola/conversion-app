@@ -1,11 +1,78 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Settings = () => {
   const navigate = useNavigate();
 
+  const [userData, setUserData] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [country, setCountry] = useState("");
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const getUserData = async () => {
+    let response = await fetch(
+      `https://convers-6f30.onrender.com/auth/getUser/${token}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    response = await response.json();
+
+    // if response
+    if (response.User) {
+      setUserData(response.User);
+    }
+  };
+
+  const userDetails = {
+    firstName,
+    lastName,
+    emailAddress,
+    country,
+    phoneNumber,
+  };
+
+  const handleUserDataUpdate = async () => {
+    console.log(userDetails);
+    let response = await fetch(
+      `https://convers-6f30.onrender.com/auth/edit/${token}`,
+      {
+        method: "POST",
+        body: JSON.stringify(userDetails),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    response = await response.json();
+    console.log(response)
+
+    // if response
+    if (response.message === "Edit Successful") {
+      toast.success(response.message);
+      window.location.reload();
+    }
+
+    // if error
+    if (response.message === "An error occurred") {
+      console.log("error message is:", response.message);
+      toast.error(response.message);
+    }
+  };
+
   return (
     <section className="bg-[#282828] absolute top-0 scroll right-0 left-0 flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
+      <ToastContainer theme="colored"/>
       <div className="flex items-center justify-between mb-7 w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +88,7 @@ const Settings = () => {
             stroke="white"
             strokeWidth="2.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
           <path
             d="M8.625 18L14.625 24"
@@ -60,7 +127,9 @@ const Settings = () => {
           </svg>
           <input
             type="text"
-            placeholder="Ife"
+            placeholder={userData.firstName}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none pr-2"
           />
         </div>
@@ -83,7 +152,9 @@ const Settings = () => {
           </svg>
           <input
             type="text"
-            placeholder="Ricardo"
+            placeholder={userData.lastName}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 outline-none pr-2"
           />
         </div>
@@ -106,33 +177,11 @@ const Settings = () => {
           </svg>
           <input
             type="email"
-            placeholder="ifericardo@gmail.com"
+            placeholder={userData.emailAddress}
+            value={emailAddress}
+            onChange={(e) => setEmailAddress(e.target.value)}
             className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 pr-2 outline-none"
           />
-        </div>
-
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6">
-          <p className="text-[#717171] w-[25%]">Gender</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="4"
-            height="50"
-            viewBox="0 0 4 50"
-            fill="none"
-          >
-            <path
-              d="M2 2L2 48"
-              stroke="#151718"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="flex items-start w-[65%]">
-            <select className="font-bold w-full bg-inherit ml-3 outline-none">
-              <option value="">Male</option>
-              <option value="">Female</option>
-            </select>
-          </div>
         </div>
 
         <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
@@ -153,7 +202,9 @@ const Settings = () => {
           </svg>
           <input
             type="number"
-            placeholder="+44775656756"
+            placeholder={userData.phoneNumber}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             className="placeholder:font-bold placeholder:text-white bg-inherit ml-3 pr-2 outline-none"
           />
         </div>
@@ -176,13 +227,19 @@ const Settings = () => {
             />
           </svg>
           <div className="flex items-start w-[65%]">
-            <select className="font-bold w-full bg-inherit ml-3 outline-none">
-              <option value="">United Kingdom</option>
-              <option value="">Nigeria</option>
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              className="font-bold w-full bg-inherit ml-3 outline-none"
+            >
+              <option value="">{userData.country}</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="United States<">United States</option>
             </select>
           </div>
         </div>
-        <button className="w-full bg-[#0A42CB] rounded-lg p-3 mt-1 font-bold text-xl">
+        <button onClick={handleUserDataUpdate} className="w-full bg-[#0A42CB] rounded-lg p-3 mt-1 font-bold text-xl">
           Update
         </button>
       </div>
