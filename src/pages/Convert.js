@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import fromCurrency from "../assets/from.png";
-import toCurrency from "../assets/to.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Convert = () => {
   const [amount, setAmount] = useState("");
   const [fromCurrency, setFromCurrency] = useState("");
   const [toCurrency, setToCurrency] = useState("");
+  const [toAmount, setToAmount] = useState("");
+  const [result, setResult] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
 
   const convertDetails = { token, amount, fromCurrency, toCurrency };
-  // console.log(convertDetails);
-  
+
   // handle currency conversion
   const handleConvert = async () => {
     let response = await fetch(
-      "https://convers-6f30.onrender.com//convert/convertFiat",
+      "https://convers-6f30.onrender.com/convert/convertFiat",
       {
         method: "POST",
         body: JSON.stringify(convertDetails),
@@ -24,22 +25,25 @@ const Convert = () => {
       }
     );
     response = await response.json();
-    console.log(response);
+    // console.log(response);
 
     // if response
-    // if (response.message === "Edit Successful") {
-    //   toast.success(response.message);
-    //   window.location.reload();
-    // }
+    if (response.message === " Successful") {
+      setToAmount(response.toAmount);
+      toast.success("Conversion Successful");
+      setResult(true)
+      return;
+    }
 
-    // // if error
-    // if (response.message === "An error occurred") {
-    //   toast.error(response.message);
-    // }
+    // if error
+    if (response.err.message === "err") {
+      toast.error("Error");
+    }
   };
 
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
+      <ToastContainer theme="colored" />
       <p className="font-bold text-xl mb-10">Convert</p>
       <div className="flex flex-col items-center justify-center gap-2 bg-[#151718] w-full rounded-3xl p-5">
         <div className="flex justify-between gap-3 items-center w-full">
@@ -49,8 +53,9 @@ const Convert = () => {
             <select
               value={fromCurrency}
               onChange={(e) => setFromCurrency(e.target.value)}
-              className="w-full bg-[#151718] border rounded-lg py-2 px-1"
+              className="w-full text-sm bg-[#151718] border rounded-lg py-2 px-1"
             >
+              <option value="">Select currency</option>
               <option value="USD">USD</option>
               <option value="NGN">NGN</option>
               <option value="GBP">GBP</option>
@@ -63,8 +68,9 @@ const Convert = () => {
             <select
               value={toCurrency}
               onChange={(e) => setToCurrency(e.target.value)}
-              className="w-full bg-[#151718] border rounded-lg py-2 px-1"
+              className="w-full text-sm bg-[#151718] border rounded-lg py-2 px-1"
             >
+              <option value="">Select currency</option>
               <option value="NGN">NGN</option>
               <option value="USD">USD</option>
               <option value="GBP">GBP</option>
@@ -73,14 +79,14 @@ const Convert = () => {
         </div>
 
         <p className="justify-self-start w-full ml-2">Amount:</p>
-        <div className="flex items-center bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
+        <div className="flex items-center bg-[#212325] w-full rounded-xl pl-2 overflow-hidden">
           {/* amount to convert input box */}
           <input
             type="number"
             placeholder="Amount to convert"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none w-full py-3"
+            className="placeholder:text-[#717171] bg-inherit outline-none w-full py-3"
           />
         </div>
 
@@ -92,9 +98,11 @@ const Convert = () => {
           Convert
         </button>
         {/* result */}
-        <p className="text-lg mt-3">
-          Result: <span className="font-semibold">1234</span>
-        </p>
+        {result && (
+          <p className="text-lg mt-3">
+            Result: <span className="font-semibold">{toAmount}</span>
+          </p>
+        )}
       </div>
       {/* recent conversions */}
       <p className="my-4 justify-self-start w-full">Recent Conversion</p>
