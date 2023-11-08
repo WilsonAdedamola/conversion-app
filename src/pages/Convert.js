@@ -1,65 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
 import fromCurrency from "../assets/from.png";
 import toCurrency from "../assets/to.png";
 
 const Convert = () => {
+  const [amount, setAmount] = useState("");
+  const [fromCurrency, setFromCurrency] = useState("");
+  const [toCurrency, setToCurrency] = useState("");
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+
+  const convertDetails = { token, amount, fromCurrency, toCurrency };
+  // console.log(convertDetails);
+  
+  // handle currency conversion
+  const handleConvert = async () => {
+    let response = await fetch(
+      "https://convers-6f30.onrender.com//convert/convertFiat",
+      {
+        method: "POST",
+        body: JSON.stringify(convertDetails),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    response = await response.json();
+    console.log(response);
+
+    // if response
+    // if (response.message === "Edit Successful") {
+    //   toast.success(response.message);
+    //   window.location.reload();
+    // }
+
+    // // if error
+    // if (response.message === "An error occurred") {
+    //   toast.error(response.message);
+    // }
+  };
+
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
       <p className="font-bold text-xl mb-10">Convert</p>
       <div className="flex flex-col items-center justify-center gap-2 bg-[#151718] w-full rounded-3xl p-5">
-        <p className="justify-self-start w-full ml-10">From:</p>
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
-          <img src={fromCurrency} alt="" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="4"
-            height="50"
-            viewBox="0 0 4 50"
-            fill="none"
-          >
-            <path
-              d="M2 2L2 48"
-              stroke="#151718"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-          {/* from currency input box */}
+        <div className="flex justify-between gap-3 items-center w-full">
+          {/* from */}
+          <div className="w-full flex flex-col items-start justify-start">
+            <p className="justify-self-start w-full ml-2">From:</p>
+            <select
+              value={fromCurrency}
+              onChange={(e) => setFromCurrency(e.target.value)}
+              className="w-full bg-[#151718] border rounded-lg py-2 px-1"
+            >
+              <option value="USD">USD</option>
+              <option value="NGN">NGN</option>
+              <option value="GBP">GBP</option>
+            </select>
+          </div>
+
+          {/* to */}
+          <div className="w-full flex flex-col items-start">
+            <p className="justify-self-start w-full ml-2">To:</p>
+            <select
+              value={toCurrency}
+              onChange={(e) => setToCurrency(e.target.value)}
+              className="w-full bg-[#151718] border rounded-lg py-2 px-1"
+            >
+              <option value="NGN">NGN</option>
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+            </select>
+          </div>
+        </div>
+
+        <p className="justify-self-start w-full ml-2">Amount:</p>
+        <div className="flex items-center bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
+          {/* amount to convert input box */}
           <input
             type="number"
-            placeholder="Naira"
-            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none"
+            placeholder="Amount to convert"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none w-full py-3"
           />
         </div>
 
-        <p className="justify-self-start w-full ml-10">To:</p>
-        <div className="flex items-center gap-3 bg-[#212325] w-full rounded-xl pl-6 overflow-hidden">
-          <img src={toCurrency} alt="" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="4"
-            height="50"
-            viewBox="0 0 4 50"
-            fill="none"
-          >
-            <path
-              d="M2 2L2 48"
-              stroke="#151718"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-          {/* to currency input box */}
-          <input
-            type="number"
-            placeholder="Us Dollars"
-            className="placeholder:text-[#717171] bg-inherit ml-3 pr-2 outline-none"
-          />
-        </div>
         {/* convert button */}
-        <button className="w-full bg-[#0A42CB] rounded-lg p-3 mt-3 font-bold text-xl">
+        <button
+          onClick={handleConvert}
+          className="w-full bg-[#0A42CB] rounded-lg p-3 mt-3 font-bold text-xl"
+        >
           Convert
         </button>
+        {/* result */}
+        <p className="text-lg mt-3">
+          Result: <span className="font-semibold">1234</span>
+        </p>
       </div>
       {/* recent conversions */}
       <p className="my-4 justify-self-start w-full">Recent Conversion</p>
@@ -90,9 +125,9 @@ const Convert = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-            <p className="text-[#DF2B2B]">₦830.00</p>
-            <p className="text-[#2DC24E]">$1.00</p>
-          </div>
+          <p className="text-[#DF2B2B]">₦830.00</p>
+          <p className="text-[#2DC24E]">$1.00</p>
+        </div>
       </div>
 
       <div className="flex justify-between items-center w-full px-2 py-3">
@@ -117,9 +152,9 @@ const Convert = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-            <p className="text-[#DF2B2B]">₦830.00</p>
-            <p className="text-[#2DC24E]">$1.00</p>
-          </div>
+          <p className="text-[#DF2B2B]">₦830.00</p>
+          <p className="text-[#2DC24E]">$1.00</p>
+        </div>
       </div>
 
       <div className="flex justify-between items-center w-full px-2 py-3">
@@ -144,9 +179,9 @@ const Convert = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-            <p className="text-[#DF2B2B]">₦830.00</p>
-            <p className="text-[#2DC24E]">$1.00</p>
-          </div>
+          <p className="text-[#DF2B2B]">₦830.00</p>
+          <p className="text-[#2DC24E]">$1.00</p>
+        </div>
       </div>
 
       <div className="flex justify-between items-center w-full px-2 py-3">
@@ -171,9 +206,9 @@ const Convert = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-            <p className="text-[#DF2B2B]">₦830.00</p>
-            <p className="text-[#2DC24E]">$1.00</p>
-          </div>
+          <p className="text-[#DF2B2B]">₦830.00</p>
+          <p className="text-[#2DC24E]">$1.00</p>
+        </div>
       </div>
     </section>
   );

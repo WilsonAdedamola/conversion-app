@@ -9,12 +9,15 @@ const Transfer = () => {
   const [currency, setCurrency] = useState("GBP");
   const [receiverId, setReceiverId] = useState("");
   const [amount, setAmount] = useState("");
-  const [pin, setPin] = useState("");
+  const [pin, setPin] = useState();
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const transferDetails = { currency, receiverId, amount, pin, token };
+  const intPin = parseInt(pin)
+  console.log(intPin)
+  console.log(typeof(intPin))
+  const transferDetails = { currency, receiverId, amount, intPin, token };
 
   useEffect(() => {
     getBalance();

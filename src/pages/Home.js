@@ -69,8 +69,8 @@ const Home = () => {
         <div className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-[1.9rem] bg-[#212325]">
           <div className="flex items-center justify-between gap-4">
             <p>1</p>
-            <img src={dinar} alt="Kuwaiti Dinar" />
-            <p>Kuwaiti Dinar</p>
+            <img src={pounds} alt="British Pound" />
+            <p>British Pound</p>
             <p className="text-xs text-[#A1A1A1]">KD</p>
           </div>
           <Freq />
@@ -79,7 +79,7 @@ const Home = () => {
         <div className="flex items-center justify-between gap-2 w-full px-4 py-3 rounded-[1.9rem] bg-[#212325]">
           <div className="flex items-center justify-between gap-4">
             <p>2</p>
-            <img src={pounds} alt="British Pound Sterling" />
+            <img src={dinar} alt="British Pound Sterling" />
             <p>Kuwaiti Dinar</p>
             <p className="text-xs text-[#A1A1A1]">GBP</p>
           </div>
