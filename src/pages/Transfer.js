@@ -6,24 +6,23 @@ import "react-toastify/dist/ReactToastify.css";
 const Transfer = () => {
   const [balance, setBalance] = useState("");
   const [txnHistory, setTxnHistory] = useState("");
+  const [recentTxn, setRecentTxn] = useState(false);
   const [currency, setCurrency] = useState("GBP");
   const [receiverId, setReceiverId] = useState("");
   const [amount, setAmount] = useState("");
-  const [pin, setPin] = useState();
+  const [pin, setPin] = useState("");
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const intPin = parseInt(pin)
-  console.log(intPin)
-  console.log(typeof(intPin))
-  const transferDetails = { currency, receiverId, amount, intPin, token };
+  const transferDetails = { currency, receiverId, amount, pin, token };
 
   useEffect(() => {
     getBalance();
-    // getTxnHistory()
+    getTxnHistory();
   }, []);
 
+  // handle get balance
   const getBalance = async () => {
     let response = await fetch(
       `https://convers-6f30.onrender.com/auth/getUser/${token}`,
@@ -36,32 +35,29 @@ const Transfer = () => {
 
     // if response
     if (response.UserAccount) {
-      setBalance(response.UserAccount);
-      console.log(balance);
+      setBalance(response.UserAccount.balance);
     }
   };
 
-  // const toks = {token}
+  // handle get transaction history
+  const getTxnHistory = async () => {
+    let response = await fetch(
+      `https://convers-6f30.onrender.com/txn/getTxns/${token}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    response = await response.json();
 
-  // const getTxnHistory = async () => {
-  //   let response = await fetch(
-  //     "https://convers-6f30.onrender.com/txn/getTxns/",
-  //     {
-  //       method: "GET",
-  //       // body: JSON.stringify(token),
-  //       headers: { "Content-Type": "application/json" },
-  //     }
-  //   );
-  //   response = await response.json();
-  //   console.log(response)
+    // if response
+    if (response) {
+      setTxnHistory(response);
+      setRecentTxn(true);
+    }
+  };
 
-  //   // if response
-  //   // if (response.UserAccount) {
-  //   //   setTxnHistory(response.UserAccount);
-  //   //   console.log(balance);
-  //   // }
-  // };
-
+  // handle transfer
   const handleTransfer = async () => {
     if (receiverId == "") {
       toast.warn("Receiver id cannot be empty");
@@ -69,35 +65,42 @@ const Transfer = () => {
       if (amount == "") {
         toast.warn("Enter amount to transfer");
       } else {
-        if (pin == "") {
-          toast.warn("Enter pin");
+        if (amount < 10) {
+          toast.warn("Amount cannot be less than 10");
         } else {
-          let response = await fetch(
-            "https://convers-6f30.onrender.com/txn/transferFunds",
-            {
-              method: "POST",
-              body: JSON.stringify(transferDetails),
-              headers: { "Content-Type": "application/json" },
+          if (pin == "") {
+            toast.warn("Enter pin");
+          } else {
+            let response = await fetch(
+              "https://convers-6f30.onrender.com/txn/transferFunds",
+              {
+                method: "POST",
+                body: JSON.stringify(transferDetails),
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+            response = await response.json();
+
+            // if response
+            if (response.message === "Transfer Successful") {
+              toast.success(response.message);
+              setTimeout(() => window.location.reload(), 3000);
             }
-          );
-          response = await response.json();
-          console.log(response);
 
-          // if response
-          // if (response.message === "Successful fund transfer") {
-          //   toast.success(response.message);
-          //   window.location.reload();
-          // }
+            // if error
+            if (
+              response.message === "User not found" ||
+              response.message === "Incorrect Pin" ||
+              response.message === "Insufficient balance"
+            ) {
+              toast.error(response.message);
+            }
 
-          //   // if error
-          // if (response.message === "User not found" || "incorrect PIN" || "insufficient balance") {
-          //   toast.error(response.message);
-          // }
-
-          // // if error
-          // if (response.message === "An error occurred") {
-          //   toast.error(response.message);
-          // }
+            // if error
+            if (response.message === "An error occurred") {
+              toast.error(response.message);
+            }
+          }
         }
       }
     }
@@ -121,7 +124,10 @@ const Transfer = () => {
       </div>
       <div className="flex flex-col items-center justify-center gap-2 bg-[#151718] w-full rounded-3xl p-5">
         <p className="mb-3 text-sm">
-          Balance: <span className="font-semibold">{balance.balance}</span>
+          Balance:{" "}
+          <span className="font-semibold">
+            {parseFloat(balance).toFixed(2)}
+          </span>
         </p>
         <p className="justify-self-start w-full ml-10">To:</p>
         <div className="bg-[#212325] w-full rounded-xl">
@@ -178,41 +184,17 @@ const Transfer = () => {
         <p className="text-xs">Amount</p>
         <p className="text-xs mr-7">Status</p>
       </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#0A42CB]">Pending</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">$320.00</p>
-        <p className="text-[#F92C2C]">Failed</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#2DC24E]">Success</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#2DC24E]">Success</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#0A42CB]">Pending</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#2DC24E]">Success</p>
-      </div>
-      <div className="flex justify-between items-center w-full px-2 py-3">
-        <p>17th, Aug</p>
-        <p className="">₦8,300.00</p>
-        <p className="text-[#2DC24E]">Success</p>
-      </div>
+      {recentTxn ? (
+        txnHistory.map((txn)=>(
+        <div key={txn.id} className="flex justify-between items-center w-full px-2 py-3">
+          <p key={txn.id} className="max-w-min">{txn.updatedAt}</p>
+          <p key={txn.id} className="">{txn.amount}</p>
+          <p className="text-[#0A42CB]">Success</p>
+        </div>
+        ))
+      ) : (
+        <p className="font-semibold text-lg mt-5">No recent transaction</p>
+      )}
     </section>
   );
 };
