@@ -46,7 +46,6 @@ const Signup = () => {
 
         // if response
         if (response.message) {
-          console.log("success message is:", response.message);
           toast.success(response.message);
           console.log("response", response);
           navigate("/");
@@ -56,8 +55,6 @@ const Signup = () => {
         if (response.err) {
           console.log("error message is:", response.err.message);
           toast.error(response.err.message);
-          console.log("response", response);
-          // setTimeout(navigate("/"), 10000)
         }
       }
     }
