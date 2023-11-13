@@ -13,6 +13,7 @@ const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [pin, setPin] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const details = {
     firstName,
@@ -46,14 +47,29 @@ const Signup = () => {
 
         // if response
         if (response.message) {
-          toast.success(response.message + ",will redirect in 3 seconds");
-          setTimeout(()=>navigate("/"), 4000)
+          setLoading(true);
           
+          setTimeout(() => {
+            toast.success(response.message + ",will redirect in 3 seconds");
+            setTimeout(() => {
+              setEmailAddress("");
+              setPassword("");
+              setPin("")
+              setPhoneNumber("")
+              setCountry("")
+              setLastName("")
+              setFirstName("")
+              setLoading(false);
+              navigate("/");
+            }, 2000);
+          }, 4000);
+          return;
         }
 
         // if error
         if (response.err) {
           toast.error(response.err.message);
+          return;
         }
       }
     }
@@ -127,7 +143,7 @@ const Signup = () => {
           type="submit"
           className="w-full bg-[#0A42CB] rounded-lg p-5 mt-7 font-bold text-xl"
         >
-          Sign up
+           {loading ? "Signing up..." : "Sign up"}
         </button>
       </form>
       <p onClick={() => navigate("/")} className="mt-7 cursor-pointer">

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Transfer = () => {
-  const [balance, setBalance] = useState("");
+  const [balance, setBalance] = useState("0.0");
   const [txnHistory, setTxnHistory] = useState("");
   const [recentTxn, setRecentTxn] = useState(false);
   const [currency, setCurrency] = useState("GBP");

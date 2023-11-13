@@ -5,18 +5,17 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Profile = () => {
   const [data, setData] = useState("");
-  const [state, setState] = useState(true);
   const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
 
   const logout = () => {
     localStorage.clear();
-    setState(false)
     toast.info("Logout successful will redirect in 3 seconds");
     setTimeout(() => navigate("/"), 4000);
   };
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = user.token;
 
   useEffect(() => {
     getUser();
@@ -36,6 +35,7 @@ const Profile = () => {
     // if response
     if (response.User) {
       setData(response.User);
+      return
     }
   };
 
@@ -57,8 +57,6 @@ const Profile = () => {
 
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
-      {/* {state ? (
-        <> */}
           <ToastContainer theme="colored" />
           <p className="font-bold text-xl mb-10">Profile</p>
           <div className="flex flex-col items-center justify-center w-full bg-[#151718] rounded-3xl p-7 h-80 mb-10">
@@ -412,18 +410,6 @@ const Profile = () => {
             </div>
           </div>
           <Outlet />
-        {/* </>
-      ) : (
-        <div className="w-full">
-          <h3 className="mb-6 text-center">You're not logged in</h3>
-          <button
-            onClick={() => navigate("/")}
-            className="w-full text-[#0A42CB] bg-white rounded-lg p-5 font-bold text-xl"
-          >
-            Sign in
-          </button>
-        </div>
-      )} */}
     </section>
   );
 };
