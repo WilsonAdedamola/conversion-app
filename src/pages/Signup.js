@@ -46,14 +46,13 @@ const Signup = () => {
 
         // if response
         if (response.message) {
-          toast.success(response.message);
-          console.log("response", response);
-          navigate("/");
+          toast.success(response.message + ",will redirect in 3 seconds");
+          setTimeout(()=>navigate("/"), 4000)
+          
         }
 
         // if error
         if (response.err) {
-          console.log("error message is:", response.err.message);
           toast.error(response.err.message);
         }
       }

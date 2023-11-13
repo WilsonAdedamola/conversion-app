@@ -22,10 +22,10 @@ const Signin = () => {
     // if response
     if (response.message === "Login Successful") {
       toast.success(response.message);
+      localStorage.setItem("user", JSON.stringify(response));
       setEmailAddress("");
       setPassword("");
-      localStorage.setItem("user", JSON.stringify(response));
-      navigate("home");
+      setTimeout(() => navigate("home"), 4000);
       window.location.reload();
     }
 
@@ -44,15 +44,15 @@ const Signin = () => {
   return (
     <section className="scroll absolute w-full bg-[#282828] flex flex-col items-center justify-center overflow-y-auto h-full px-5">
       {user ? (
-        <div className="w-full">
-          <h3 className="mb-6 text-center">You're Logged in already</h3>
-          <button
-            onClick={() => navigate("home")}
-            className="w-full text-[#0A42CB] bg-white rounded-lg p-5 font-bold text-xl"
-          >
-            Go home
-          </button>
-        </div>
+          <div className="w-full">
+            <h3 className="mb-6 text-center">You're Logged in already</h3>
+            <button
+              onClick={() => navigate("home")}
+              className="w-full text-[#0A42CB] bg-white rounded-lg p-5 font-bold text-xl"
+            >
+              Go home
+            </button>
+          </div>
       ) : (
         <>
           <ToastContainer theme="colored" />
