@@ -29,7 +29,7 @@ const Transactionhistory = () => {
 
   useEffect(()=>{
     getTxnHistory()
-  })
+  },[])
 
   return (
     <section className="bg-[#282828] absolute top-0 scroll right-0 left-0 flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">

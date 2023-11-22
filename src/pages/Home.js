@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
 
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
@@ -34,25 +35,22 @@ const Home = () => {
     // if response
     if (response.User) {
       setName(response.User.firstName);
+      setCountry(response.User.country);
     }
   };
 
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
-      <ToastContainer theme="colored"/>
+      <ToastContainer theme="colored" />
       <p className="font-bold text-xl mb-10">Home</p>
       <div className="flex items-center justify-between gap-2 w-full">
         {/* user's name */}
         <p className="text-xl">
           Hey <span className="font-bold">{name},</span> Welcome back
         </p>
-        <select
-          name=""
-          id=""
-          className="bg-[#151718] rounded-3xl px-4 py-2 font-bold cursor-pointer"
-        >
-          <option value="NGN">NGN</option>
-        </select>
+        <p className="bg-[#151718] rounded-3xl px-4 py-2 font-semibold text-sm cursor-pointer">
+          {country}
+        </p>
       </div>
       {/* trending */}
       <div className="flex flex-col items-center justify-center gap-4 bg-[#151718] p-4 pb-7 rounded-3xl w-full mt-8">

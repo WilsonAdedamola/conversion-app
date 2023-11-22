@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/Home";
 import Convert from "./pages/Convert";
 import Profile from "./pages/Profile";
@@ -11,6 +10,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Transfer from "./pages/Transfer";
 import Transactionhistory from "./pages/Transactionhistory";
+import Addcard from "./components/Addcard";
 
 const AppLayout = () => (
   <>
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <Signup />
+        element: <Signup />,
       },
       {
         path: "home",
@@ -47,8 +47,18 @@ const router = createBrowserRouter([
       },
       {
         path: "transfer",
-        element: <Transfer />
+        element: <Transfer />,
+        children: [
+          {
+            path: "addcard",
+            element: <Addcard />,
+          },
+        ],
       },
+      // {
+      //   path: "addcard",
+      //   element: <Addcard />,
+      // },
       {
         path: "profile",
         element: <Profile />,
@@ -61,7 +71,7 @@ const router = createBrowserRouter([
             path: "txnhistory",
             element: <Transactionhistory />,
           },
-        ]
+        ],
       },
       {
         path: "currency",
