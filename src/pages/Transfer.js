@@ -61,16 +61,16 @@ const Transfer = () => {
 
   // handle transfer
   const handleTransfer = async () => {
-    if (receiverId == "") {
+    if (receiverId === "") {
       toast.warn("Receiver id cannot be empty");
     } else {
-      if (amount == "") {
+      if (amount === "") {
         toast.warn("Enter amount to transfer");
       } else {
         if (amount < 10) {
           toast.warn("Amount cannot be less than 10");
         } else {
-          if (pin == "") {
+          if (pin === "") {
             toast.warn("Enter pin");
           } else {
             let response = await fetch(
@@ -135,11 +135,8 @@ const Transfer = () => {
           </button>
           <Link to="addcard">
             <button
-              onClick={() => {
-                // navigate("addcard")
-                // setRevealChannel(false);
-              }}
               className="w-full text-[#0A42CB] bg-white rounded-lg py-5 font-bold text-xl"
+              onClick={()=>navigate("addcard")}
             >
               Add Card
             </button>

@@ -40,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+        children: [
+          {
+            path: "news",
+            element: <News />,
+          },
+        ],
       },
       {
         path: "convert",
@@ -48,17 +54,11 @@ const router = createBrowserRouter([
       {
         path: "transfer",
         element: <Transfer />,
-        children: [
-          {
-            path: "addcard",
-            element: <Addcard />,
-          },
-        ],
       },
-      // {
-      //   path: "addcard",
-      //   element: <Addcard />,
-      // },
+      {
+        path: "addcard",
+        element: <Addcard />,
+      },
       {
         path: "profile",
         element: <Profile />,
@@ -76,10 +76,6 @@ const router = createBrowserRouter([
       {
         path: "currency",
         element: <Currency />,
-      },
-      {
-        path: "news",
-        element: <News />,
       },
     ],
   },

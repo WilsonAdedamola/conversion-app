@@ -1,12 +1,4 @@
-import React from "react";
-import home from "../assets/Home.svg";
-import convert from "../assets/convert.svg";
-import profile from "../assets/profile.svg";
-import activeHome from "../assets/Active-Home.svg";
-import activeConvert from "../assets/active-convert.svg";
-import activeProfile from "../assets/active-profile.svg";
 import { NavLink } from "react-router-dom";
-
 const Navbar = () => {
   return (
     <nav className="nav-bg self-end w-full py-4 mt-2 flex items-center justify-around gap-2">
@@ -167,5 +159,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

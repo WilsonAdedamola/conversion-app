@@ -39,22 +39,6 @@ const Profile = () => {
     }
   };
 
-  // function preventBack() { window.history.forward(); }
-  // setTimeout("preventBack()", 0);
-  // window.onunload = preventBack()
-
-  // if(!user) return (
-  //   <div className="w-full">
-  //         <h3 className="mb-6 text-center">You're not logged in</h3>
-  //         <button
-  //           onClick={() => navigate("/")}
-  //           className="w-full text-[#0A42CB] bg-white rounded-lg p-5 font-bold text-xl"
-  //         >
-  //           Sign in
-  //         </button>
-  //       </div>
-  // )
-
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">
           <ToastContainer theme="colored" />

@@ -29,7 +29,6 @@ const Convert = () => {
       }
     );
     response = await response.json();
-    // console.log(response);
 
     // if response
     if (response.message === " Successful") {
@@ -66,10 +65,6 @@ const Convert = () => {
       setRecentConversion(true);
     }
   };
-
-//   const dateToday = '2/19/2022, 12:00:00 AM';
-// const date = new Date(dateToday).toLocaleDateString();
-// console.log(date);
 
   return (
     <section className="scroll flex flex-col items-center justify-start w-full px-5 pt-8 overflow-y-auto h-full">

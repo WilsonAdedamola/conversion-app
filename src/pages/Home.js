@@ -213,43 +213,44 @@ const Home = () => {
 
       {/* news */}
       <Link
-        to="news"
+        // to="news"
         className="text-[0.9rem] self-start my-4 cursor-pointer hover:font-semibold"
       >
         News
       </Link>
       <div className="flex items-center justify-between w-full bg-[#151718] rounded-xl gap-4 p-5 cursor-pointer">
         <div className="flex flex-col items-start justify-center max-w-[12rem]">
-          <p className="text-2xl font-bold">Title</p>
+          <p className="text-xs font-semibold mb-2">USD/JPY is steady below 147.45 resistance ahead of the US ADP report</p>
           <p className="text-xs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+          The US Dollar keeps a mild bid tone on the Early European trading session, with the pair trading within a narrow range below the 147.45...
           </p>
         </div>
-        <div className="flex w-full h-32 bg-[#242829] rounded-lg"></div>
+        <div className="flex w-full h-32 bg-[#242829] rounded-lg">
+          <img src="https://editorial.fxstreet.com/images/Markets/Currencies/Majors/USDJPY/forex-us-and-japanese-currency-pair-with-calculator-4564032_XtraSmall.jpg" alt="" className="rounded-lg"/>
+        </div>
       </div>
       <div className="flex items-center justify-between w-full bg-[#151718] rounded-xl gap-4 p-5 my-3 cursor-pointer">
         <div className="flex flex-col items-start justify-center max-w-[12rem]">
-          <p className="text-2xl font-bold">Title</p>
+          <p className="text-xs font-semibold mb-2">Canada Interest Rate Decision Preview: BoC set for third consecutive pause</p>
           <p className="text-xs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+          The Bank of Canada (BoC) is widely expected to leave its policy rate unchanged at 5% for the third consecutive time on Wednesday when it...
           </p>
         </div>
-        <div className="flex w-full h-32 bg-[#242829] rounded-lg"></div>
+        <div className="flex w-full h-32 bg-[#242829] rounded-lg">
+          <img src="https://editorial.fxstreet.com/images/Resources/Discover/Discover_28_1_XtraSmall.png" alt="" className="rounded-lg"/>
+        </div>
       </div>
       <div className="flex items-center justify-between w-full bg-[#151718] rounded-xl gap-4 p-5 cursor-pointer">
         <div className="flex flex-col items-start justify-center max-w-[12rem]">
-          <p className="text-2xl font-bold">Title</p>
+          <p className="text-xs font-semibold mb-2">India Gold price today: Gold corrects further, according to MCX data</p>
           <p className="text-xs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+          Gold prices fell in India on Wednesday, according to data from India's Multi Commodity Exchange (MCX).
+          Gold price stood at 62,045...
           </p>
         </div>
-        <div className="flex w-full h-32 bg-[#242829] rounded-lg"></div>
+        <div className="flex w-full h-32 bg-[#242829] rounded-lg">
+          <img src="https://editorial.fxstreet.com/images/Markets/Commodities/Metals/Gold/stacks-of-gold-bars-19033163_XtraSmall.jpg" alt="" className="rounded-lg"/>
+        </div>
       </div>
     </section>
   );
